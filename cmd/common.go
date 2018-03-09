@@ -1,14 +1,14 @@
 package cmd
 
 import (
-	"bufio"
 	"github.com/pkg/errors"
 	"github.com/urfave/cli"
 	"os"
+	"encoding/csv"
 )
 
 // selectInput determines whether we should read a file from disk or stdin
-func selectInput(c *cli.Context) (*bufio.Scanner, error) {
+func selectInput(c *cli.Context) (*csv.Reader, error) {
 	if c.NArg() > 0 {
 		reader, err := os.Open(c.Args().Get(c.NArg() - 1))
 
@@ -16,7 +16,7 @@ func selectInput(c *cli.Context) (*bufio.Scanner, error) {
 			return nil, errors.Wrap(err, "could not open input file")
 		}
 
-		return bufio.NewScanner(reader), nil
+		return csv.NewReader(reader), nil
 	}
-	return bufio.NewScanner(os.Stdin), nil
+	return csv.NewReader(os.Stdin), nil
 }
