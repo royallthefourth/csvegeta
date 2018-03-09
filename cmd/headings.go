@@ -24,7 +24,7 @@ func Headings(c *cli.Context) error {
 		if strings.ContainsAny(el, "\"'") {
 			el, _ = strconv.Unquote(el)
 		}
-		fmt.Printf("%d: %s\n", i, el)
+		fmt.Printf("%d: %s\n", i+1, el)
 	}
 
 	return nil

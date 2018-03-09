@@ -2,9 +2,9 @@ package cmd
 
 import (
 	"bufio"
+	"github.com/pkg/errors"
 	"github.com/urfave/cli"
 	"os"
-	"github.com/pkg/errors"
 )
 
 // selectInput determines whether we should read a file from disk or stdin
